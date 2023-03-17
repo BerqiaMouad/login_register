@@ -21,8 +21,8 @@
          echo "<a href='index.html'><button class='btn'>Go Back</button>";
 
       }
-      if(isset($_SESSION['valid'])){
-          header("Location: ../home.html");
-      }
+    //   if(isset($_SESSION['valid'])){
+    //       header("Location: ../home.html");
+    //   }
    }
 ?>

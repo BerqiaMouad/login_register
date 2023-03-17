@@ -11,7 +11,7 @@
     <div class="container">
         <div class="box form-box">
             <header>Login</header>
-            <form action="login.php" method="post">
+            <form id="login-form" action="" method="post">
                 <div class="field input">
                     <label for="email">Email</label>
                     <input type="text" name="email" id="email" autocomplete="off" required>
@@ -31,5 +31,33 @@
             </form>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+		$(document).ready(function(){
+			$("#login-form").submit(function(e){
+				e.preventDefault();
+				var formData = new FormData(this);
+				$.ajax({
+					url: "http://localhost/backend/index.php",
+					type: "POST",
+					data: formData,
+					cache: false,
+					contentType: false,
+					processData: false,
+					mode: 'no-cors',
+					success: function(data){
+						if(data == "valid"){
+							window.location.href = "home.html";
+						}else{
+							$("#error-message").html(data);
+						}
+					}
+				});
+			});
+		});
+
+	</script>
 </body>
 </html>
